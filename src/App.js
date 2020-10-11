@@ -12,12 +12,12 @@ function App() {
     <Router>
       <div className="App">
         <NavBar/>
-        {/*<Route exact path ="/" component={Landing}/>*/}
-        {/*<div className="container">*/}
-        {/*  <Route exact path ="/login" component={Login}/>*/}
+       <Route exact path ="/" component={Landing}/>
+        <div className="container">
+         <Route exact path ="/login" component={Login}/>
         {/*  <Route exact path ="/orders" component={OrderManagement}/>*/}
         {/*  <Route exact path ="/purchase" component={PurchaseRequisitions}/>*/}
-        {/*</div>*/}
+        </div>
       </div>
     </Router>
   );

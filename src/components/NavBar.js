@@ -47,7 +47,7 @@ class NavBar extends Component {
 
         return(
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark" style={{height: '55px'}}>
-                <a className="navbar-brand text-bold" href="#">Procument Management</a>
+                <a className="navbar-brand text-bold" href="#"><img src="https://img.icons8.com/nolan/64/structural.png"/>  &nbsp; Procurement Management</a>
                 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
                 <button
                     className="navbar-toggler"
