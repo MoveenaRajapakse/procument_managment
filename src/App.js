@@ -14,9 +14,9 @@ function App() {
         <NavBar/>
        <Route exact path ="/" component={Landing}/>
         <div className="container">
-         <Route exact path ="/login" component={Login}/>
-        {/*  <Route exact path ="/orders" component={OrderManagement}/>*/}
-        {/*  <Route exact path ="/purchase" component={PurchaseRequisitions}/>*/}
+          <Route exact path ="/login" component={Login}/>
+          <Route exact path ="/orders" component={OrderManagement}/>
+          <Route exact path ="/purchase" component={PurchaseRequisitions}/>
         </div>
       </div>
     </Router>

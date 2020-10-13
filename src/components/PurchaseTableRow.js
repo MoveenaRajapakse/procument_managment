@@ -4,24 +4,24 @@ class PurchaseTableRow extends Component {
     render() {
         return (
             <tr>
+                {/*<td>
+                    {this.props.obj.pid}
+                </td>*/}
+
                 <td>
-                    {this.props.obj.OrderId}
+                    {this.props.obj.supplier}
                 </td>
 
                 <td>
-                    {this.props.obj.Supplier}
+                    {this.props.obj.orderDate}
                 </td>
 
                 <td>
-                    {this.props.obj.Delivery_Date}
+                    {this.props.obj.address}
                 </td>
 
                 <td>
-                    {this.props.obj.Delivery_Address}
-                </td>
-
-                <td>
-                    {this.props.obj.Total}
+                    {this.props.obj.total}
                 </td>
 
             </tr>

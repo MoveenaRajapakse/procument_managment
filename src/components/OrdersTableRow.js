@@ -5,11 +5,11 @@ class OrdersTableRow extends Component {
         return (
             <tr>
                 <td>
-                    {this.props.obj.RequisitionID}
+                    {this.props.obj.pid}
                 </td>
 
                 <td>
-                    {this.props.obj.meterial}
+                    {this.props.obj.material}
                 </td>
 
                 <td>

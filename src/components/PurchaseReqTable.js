@@ -12,7 +12,7 @@ class PurchaseReqTable extends Component {
     }
 
     componentDidMount() {
-        axios.get('')
+        axios.get('/getAllRequisition')
             .then(response => {
                 this.setState({purchaseRequest: response.data});
             })
@@ -33,9 +33,9 @@ class PurchaseReqTable extends Component {
                 {/*<h4 align="center">Purchase Requisition List</h4>*/}
                 <h5>
                     <table className="table table-striped" style={{marginTop: 20}}>
-                        <thead>
+                        <thead class="thead-dark">
                         <tr>
-                            <th>Order ID</th>
+                            {/*<th>Order ID</th>*/}
                             <th>Supplier</th>
                             <th>Delivery Date</th>
                             <th>Delivery Address</th>

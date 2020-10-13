@@ -12,7 +12,7 @@ class OderDetailsTable extends Component {
     }
 
     componentDidMount() {
-        axios.get('')
+        axios.get('/getAllRequisition')
             .then(response => {
                 this.setState({orders: response.data});
             })
@@ -32,7 +32,7 @@ class OderDetailsTable extends Component {
             <div>
                 <h5>
                     <table className="table table-striped" style={{marginTop: 20}}>
-                        <thead>
+                        <thead class="thead-dark">
                         <tr>
                             <th>Requisition ID</th>
                             <th>Material</th>

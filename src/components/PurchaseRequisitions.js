@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {purchaseRequisitions} from './UserFunctions';
+import PurchaseReqTable from "./PurchaseReqTable";
 
 class PurchaseRequisitions extends Component {
 
@@ -15,7 +16,7 @@ class PurchaseRequisitions extends Component {
     render() {
         return (
             <div>
-                
+               <PurchaseReqTable/>
             </div>
         );
     }

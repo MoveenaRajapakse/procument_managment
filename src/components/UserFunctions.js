@@ -2,7 +2,8 @@ import axios from 'axios';
 
 export const purchaseRequisitions = user => {
     return axios
-        .put('', {
+        .put('/updateRequisition', {
+            pid: user.pid,
             status : user.status
         })
         .then(res => {
