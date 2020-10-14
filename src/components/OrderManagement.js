@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import OderDetailsTable from "./OderDetailsTable";
+import {updateInventory} from "./UserFunctions";
 
 class OrderManagement extends Component {
 
@@ -12,7 +13,13 @@ class OrderManagement extends Component {
         }
     }
 
+    onSubmit(e) {
+        e.preventDefault();
 
+        const user = {
+
+        }
+    }
 
     render() {
         return (

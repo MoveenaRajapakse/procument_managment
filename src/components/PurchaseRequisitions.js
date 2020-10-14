@@ -12,7 +12,46 @@ class PurchaseRequisitions extends Component {
         }
     }
 
+    onSubmit(e) {
+        e.preventDefault();
 
+
+        const user = {
+            pid: this.state.pid,
+            status: this.state.status
+        }
+
+        purchaseRequisitions(user).then(res => {
+            if(res){
+                this.props.history.push(`/purchase`)
+            }
+        })
+    }
+
+    acceptReq = (id) =>{
+        const user = {
+            pid: id,
+            status: 'accepted'
+        }
+        purchaseRequisitions(user).then(res => {
+            if(res){
+                this.props.history.push(`/purchase`)
+            }
+        })
+
+    }
+
+    rejectReq = (id) =>{
+        const user = {
+            pid: id,
+            status: 'rejected'
+        }
+        purchaseRequisitions(user).then(res => {
+            if(res){
+                this.props.history.push(`/purchase`)
+            }
+        })
+    }
 
     render() {
         return (
@@ -21,7 +60,7 @@ class PurchaseRequisitions extends Component {
                 <br/>
                 <div class="container">
                     <h4>Updating Purchase Requisition Status</h4>
-                    <form>
+                    <form noValidate onSubmit={this.onSubmit} className="purchaseRequisitions">
                         <div className="row">
                             <div className="col">
                                 <div className="form-group">
@@ -31,8 +70,8 @@ class PurchaseRequisitions extends Component {
                                            name="order_id"
                                            id="order_id"
                                            placeholder="Select the Order ID"
-                                           /*value={this.state.game_name}
-                                           onChange={this.onChange}*//>
+                                           value={this.state.pid}
+                                           onChange={this.onChange}/>
                                 </div>
                             </div>
 
@@ -126,11 +165,11 @@ class PurchaseRequisitions extends Component {
                             &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
                             &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;*/}
                             <div className="col-md-3">
-                                <button className="btn btn-dark btn-block">Accept</button>
+                                <button className="btn btn-dark btn-block" onClick={this.acceptReq(this.state.pid)}>Accept</button>
                             </div>
 
                             <div className="col-md-3">
-                                <button className="btn btn-dark btn-block">Reject</button>
+                                <button className="btn btn-dark btn-block" onClick={this.rejectReq(this.state.pid)}>Reject</button>
                             </div>
                         </div>
 
