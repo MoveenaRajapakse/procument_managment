@@ -51,7 +51,7 @@ class PurchaseRequisitions extends Component {
                                            id="order_id"
                                            placeholder="Select the Order ID"
                                            value={this.state.pid}
-                                           />
+                                           onChange={this.onChange}/>
                                 </div>
                             </div>
 
