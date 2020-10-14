@@ -33,7 +33,7 @@ class Login extends Component {
 
         if(this.state.email == user.email && this.state.password == user.password){
             const token = '123456abcdef';
-            sessionStorage.setItem('usertoken', token);
+            localStorage.setItem('usertoken', token);
             this.props.history.push(`/`);
         }
         else {
