@@ -31,7 +31,7 @@ class OderDetailsTable extends Component {
         return (
             <div>
                 <h5>
-                    <table className="table table-striped" style={{marginTop: 20}}>
+                    <table className="table table-striped" style={{marginTop: 15}}>
                         <thead class="thead-dark">
                         <tr>
                             <th>Requisition ID</th>
