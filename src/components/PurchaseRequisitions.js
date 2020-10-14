@@ -8,11 +8,30 @@ class PurchaseRequisitions extends Component {
         super();
         this.state = {
             pid : '',
-            status : ''
+            status : '',
+            quantity:0,
+            material:'',
+            total:0,
+            address:'',
+            orderDate:''
         }
     }
 
+    getData = (supplier,orderDate,address,total,material,quantity,pid) => {
+        this.setState({
+            pid : pid,
+            status : '',
+            quantity:quantity,
+            material:material,
+            total:total,
+            address:address,
+            orderDate:orderDate,
+            supplier:supplier
 
+        })
+
+        console.log(this.state);
+    }
 
     render() {
         return (
@@ -31,8 +50,8 @@ class PurchaseRequisitions extends Component {
                                            name="order_id"
                                            id="order_id"
                                            placeholder="Select the Order ID"
-                                           /*value={this.state.game_name}
-                                           onChange={this.onChange}*//>
+                                           value={this.state.pid}
+                                           />
                                 </div>
                             </div>
 
@@ -44,8 +63,7 @@ class PurchaseRequisitions extends Component {
                                            name="supplier"
                                            id="supplier"
                                            placeholder="Select the supplier"
-                                        /*value={this.state.game_name}
-                                        onChange={this.onChange}*//>
+                                           value={this.state.supplier}/>
                                 </div>
                             </div>
                         </div>
@@ -59,8 +77,7 @@ class PurchaseRequisitions extends Component {
                                            name="date"
                                            id="date"
                                            placeholder="Select the Delivery Date"
-                                        /*value={this.state.game_name}
-                                        onChange={this.onChange}*//>
+                                           value={this.state.orderDate}/>
                                 </div>
                             </div>
 
@@ -71,9 +88,7 @@ class PurchaseRequisitions extends Component {
                                            className="form-control"
                                            name="address"
                                            id="address"
-                                           placeholder="Select the Delivery Address"
-                                        /*value={this.state.game_name}
-                                        onChange={this.onChange}*//>
+                                           value={this.state.address}/>
                                 </div>
                             </div>
                         </div>
@@ -87,8 +102,7 @@ class PurchaseRequisitions extends Component {
                                            name="materiel"
                                            id="materiel"
                                            placeholder="Select the Materiel"
-                                        /*value={this.state.game_name}
-                                        onChange={this.onChange}*//>
+                                           value={this.state.material}/>
                                 </div>
                             </div>
 
@@ -100,8 +114,7 @@ class PurchaseRequisitions extends Component {
                                            name="total"
                                            id="total"
                                            placeholder="Select the Total"
-                                        /*value={this.state.game_name}
-                                        onChange={this.onChange}*//>
+                                           value={this.state.total}/>
                                 </div>
                             </div>
 
@@ -113,8 +126,7 @@ class PurchaseRequisitions extends Component {
                                            name="quantity"
                                            id="quantity"
                                            placeholder="Select the Quantity"
-                                        /*value={this.state.game_name}
-                                        onChange={this.onChange}*//>
+                                           value={this.state.quantity}/>
                                 </div>
                             </div>
                         </div>
@@ -138,7 +150,7 @@ class PurchaseRequisitions extends Component {
                 </div>
                 <br/><br/>
                 <h4>Available Purchase Requisitions</h4>
-                <PurchaseReqTable/>
+                <PurchaseReqTable onViewClick={this.getData}/>
             </React.Fragment>
 
         );
