@@ -48,6 +48,7 @@ class PurchaseReqTable extends Component {
                             <th>Delivery Date</th>
                             <th>Delivery Address</th>
                             <th>Total</th>
+                            <th>Option</th>
 
                         </tr>
                         </thead>
@@ -60,7 +61,7 @@ class PurchaseReqTable extends Component {
                                             <td>{pr.orderDate}</td>
                                             <td>{pr.address}</td>
                                             <td>{pr.total}</td>
-                                            <td><button type="button" className="btn btn-outline-info btn-sm" onClick={()=>this.getRowData(pr.supplier,pr.orderDate,pr.address,pr.total,pr.material,pr.quantity,pr.pid)}>VIEW</button></td>
+                                            <td><button type="button" className="btn btn-dark btn-sm" onClick={()=>this.getRowData(pr.supplier,pr.orderDate,pr.address,pr.total,pr.material,pr.quantity,pr.pid)}>VIEW</button></td>
                                         </tr>
                                     </tbody>
                                 )

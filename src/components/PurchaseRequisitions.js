@@ -15,6 +15,7 @@ class PurchaseRequisitions extends Component {
             address:'',
             orderDate:''
         }
+
     }
 
     getData = (supplier,orderDate,address,total,material,quantity,pid) => {
@@ -33,12 +34,38 @@ class PurchaseRequisitions extends Component {
         console.log(this.state);
     }
 
+    acceptReq= (id) =>{
+        const user = {
+            pid:id,
+            status: 'accepted'
+        }
+
+        purchaseRequisitions(user).then(res => {
+            if(res){
+                this.props.history.push('/purchase')
+            }
+        })
+    }
+
+    rejectReq= (id) =>{
+        const user = {
+            pid:id,
+            status: 'rejected'
+        }
+
+        purchaseRequisitions(user).then(res => {
+            if(res){
+                this.props.history.push('/purchase')
+            }
+        })
+    }
+
     render() {
         return (
             <React.Fragment>
                 {/*<Header />*/}
                 <br/>
-                <div class="container">
+                <div className="container">
                     <h4>Updating Purchase Requisition Status</h4>
                     <form>
                         <div className="row">
@@ -132,17 +159,12 @@ class PurchaseRequisitions extends Component {
                         </div>
 
                         <div className="row" >
-                            {/*&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
-                            &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
-                            &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
-                            &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
-                            &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;*/}
                             <div className="col-md-3">
-                                <button className="btn btn-dark btn-block">Accept</button>
+                                <button className="btn btn-dark btn-block" onClick={() => this.acceptReq(this.state.pid)}>Accept</button>
                             </div>
 
                             <div className="col-md-3">
-                                <button className="btn btn-dark btn-block">Reject</button>
+                                <button className="btn btn-dark btn-block" onClick={() => this.rejectReq(this.state.pid)}>Reject</button>
                             </div>
                         </div>
 
