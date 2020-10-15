@@ -46,6 +46,12 @@ class OrderManagement extends Component {
             })
     }
 
+    selectBoxHandler = (e) =>{
+        let wh = {...this.state.wareHouse}
+        wh.wareHouse = e.target.value;
+        this.setState({wh});
+    }
+
     render() {
         return (
             <React.Fragment>
@@ -108,18 +114,14 @@ class OrderManagement extends Component {
                             <div className="col">
                                 <div className="form-group">
                                     <label htmlFor="game_name">Free WareHouses</label>
-                                    <select id="inputState" className="form-control" value={this.state.wareHouse} onChange={this.onChange}>
-                                        {/*{
+                                    <select id="inputState" className="form-control" value={this.state.wareHouse} onChange={this.selectBoxHandler}>
+                                        {
                                             this.state.FreewareHouses.map(wh =>{
                                                 return(
-                                                    wh.children.map(sub =>{
-                                                        return(
-                                                            <option value={sub._id} key={sub._id}>{sub.warehouse}</option>
-                                                        )
-                                                    })
+                                                    <option value={wh._id} key={wh._id}>{wh.warehouse}</option>
                                                 )
                                             })
-                                        }*/}
+                                        }
                                     </select>
                                 </div>
                             </div>
