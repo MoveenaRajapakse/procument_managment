@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import OderDetailsTable from "./OderDetailsTable";
-//import {updateInventory} from "./UserFunctions";
+import {updateInventory} from "./UserFunctions";
+import axios from "axios";
 
 class OrderManagement extends Component {
 
@@ -8,17 +9,47 @@ class OrderManagement extends Component {
         super();
         this.state = {
             pid : '',
-            materiel : '',
-            quantity : ''
+            status : '',
+            quantity:0,
+            material:'',
+            total:0,
+            address:'',
+            orderDate:'',
+            FreewareHouses: [],
+            wareHouse: ''
         }
     }
 
-    onSubmit(e) {
-        e.preventDefault();
+    getData = (supplier,orderDate,address,total,material,quantity,pid) => {
+        this.setState({
+            pid : pid,
+            status : '',
+            quantity:quantity,
+            material:material,
+            total:total,
+            address:address,
+            orderDate:orderDate,
+            supplier:supplier
 
-        const user = {
+        })
 
-        }
+        console.log(this.state);
+    }
+
+    componentDidMount() {
+        axios.get('/getFreeSlots')
+            .then(response => {
+                this.setState({FreewareHouses: response.data});
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+    }
+
+    selectBoxHandler = (e) =>{
+        let wh = {...this.state.wareHouse}
+        wh.wareHouse = e.target.value;
+        this.setState({wh});
     }
 
     render() {
@@ -26,7 +57,7 @@ class OrderManagement extends Component {
             <React.Fragment>
                 <br/>
                 <div class="container">
-                    <h4>Updating Inventory</h4>
+                    <h4>Assigning WareHouses</h4>
                     <form>
                         <div className="row">
                             <div className="col">
@@ -37,8 +68,8 @@ class OrderManagement extends Component {
                                            name="order_id"
                                            id="order_id"
                                            placeholder="Select a Record"
-                                        /*value={this.state.game_name}
-                                        onChange={this.onChange}*//>
+                                           value={this.state.pid}
+                                           onChange={this.onChange}/>
                                 </div>
                             </div>
 
@@ -50,8 +81,7 @@ class OrderManagement extends Component {
                                            name="sup"
                                            id="sup"
                                            placeholder="Select a Record"
-                                        /*value={this.state.game_name}
-                                        onChange={this.onChange}*//>
+                                        value={this.state.supplier}/>
                                 </div>
                             </div>
                         </div>
@@ -65,8 +95,7 @@ class OrderManagement extends Component {
                                            name="materiel"
                                            id="materiel"
                                            placeholder="Select a Record"
-                                        /*value={this.state.game_name}
-                                        onChange={this.onChange}*//>
+                                        value={this.state.material}/>
                                 </div>
                             </div>
 
@@ -78,15 +107,29 @@ class OrderManagement extends Component {
                                            name="qty"
                                            id="qty"
                                            placeholder="Select a Record"
-                                        /*value={this.state.game_name}
-                                        onChange={this.onChange}*//>
+                                           value={this.state.quantity}/>
+                                </div>
+                            </div>
+
+                            <div className="col">
+                                <div className="form-group">
+                                    <label htmlFor="game_name">Free WareHouses</label>
+                                    <select id="inputState" className="form-control" value={this.state.wareHouse} onChange={this.selectBoxHandler}>
+                                        {
+                                            this.state.FreewareHouses.map(wh =>{
+                                                return(
+                                                    <option value={wh._id} key={wh._id}>{wh.warehouse}</option>
+                                                )
+                                            })
+                                        }
+                                    </select>
                                 </div>
                             </div>
                         </div>
 
                         <div className="row" >
                             <div className="col-md-3">
-                                <button className="btn btn-dark btn-block">Accept</button>
+                                <button className="btn btn-dark btn-block">Assign</button>
                             </div>
 
                             <div className="col-md-3">
@@ -99,7 +142,7 @@ class OrderManagement extends Component {
 
                 <br/><br/>
                 <h4>Available Inventory Details</h4>
-                    <OderDetailsTable/>
+                    <OderDetailsTable onViewClick={this.getData}/>
 
             </React.Fragment>
 

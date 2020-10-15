@@ -20,6 +20,7 @@ class PurchaseReqTable extends Component {
             })
     }
 
+
     getRowData = (supplier,orderDate,address,total,material,quantity,pid) =>{
         this.props.onViewClick(supplier,orderDate,address,total,material,quantity,pid);
     }
