@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {BrowserRouter as Router, Route} from "react-router-dom";
 
 import NavBar from  './components/NavBar';
 import Login from './components/Login';
 import Landing from './components/Landing';
 import OrderManagement from './components/OrderManagement';
-import PurchaseRequisitions from './components/PurchaseRequisitions';
+import PurchaseRequisitions from './components/PurchaseReq/PurchaseRequisitions';
 
 function App() {
   return (

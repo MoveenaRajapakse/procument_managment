@@ -40,7 +40,7 @@ class NavBar extends Component {
 
                 {/*&nbsp; &nbsp; &nbsp; &nbsp;*/}
                 <li className="nav-item">
-                    <a href="" onClick={this.logOut.bind(this)} className="nav-link">
+                    <a href="/" onClick={this.logOut.bind(this)} className="nav-link">
                         <h5> Logout</h5>
                     </a>
                 </li>

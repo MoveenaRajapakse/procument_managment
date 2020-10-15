@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import OderDetailsTable from "./OderDetailsTable";
-import {updateInventory} from "./UserFunctions";
+//import {updateInventory} from "./UserFunctions";
 
 class OrderManagement extends Component {
 

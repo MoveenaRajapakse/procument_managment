@@ -7,7 +7,7 @@ class Landing extends Component {
                 <div className="jumbotron mt-4">
                     <div align="center" className="col-sm-8 mx-auto">
                         <h1>Procurement Management System</h1>
-                        <img src="https://img.icons8.com/nolan/370/structural.png"/>
+                        <img alt={"logo"} src="https://img.icons8.com/nolan/370/structural.png"/>
 
                     </div>
                     <div align="center" className="col-sm-8 mx-auto">
