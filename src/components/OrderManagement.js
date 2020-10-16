@@ -52,6 +52,25 @@ class OrderManagement extends Component {
         this.setState({wh});
     }
 
+    assignWareHouses = (e) =>{
+        e.preventDefault();
+
+        const pid = this.state.pid;
+        const material = this.state.material;
+        const qty = this.state.quantity;
+
+        axios.post('https://cors-anywhere.herokuapp.com/https://procure-api.herokuapp.com/updateInventory?quantity='+qty+'material='+material+'pid='+pid,{headers:{'Access-Control-Allow-Origin':'*'}}
+        ).then(response => {
+            console.log(response);
+            this.setState({
+                msg:'Assign to WareHouse Successfully'
+            })
+        }).catch(error => {
+            console.log(error);
+        })
+
+    }
+
     render() {
         return (
             <React.Fragment>
@@ -95,7 +114,8 @@ class OrderManagement extends Component {
                                            name="materiel"
                                            id="materiel"
                                            placeholder="Select a Record"
-                                        value={this.state.material}/>
+                                           value={this.state.material}
+                                           onChange={this.onChange}/>
                                 </div>
                             </div>
 
@@ -107,7 +127,8 @@ class OrderManagement extends Component {
                                            name="qty"
                                            id="qty"
                                            placeholder="Select a Record"
-                                           value={this.state.quantity}/>
+                                           value={this.state.quantity}
+                                           onChange={this.onChange}/>
                                 </div>
                             </div>
 
@@ -129,7 +150,7 @@ class OrderManagement extends Component {
 
                         <div className="row" >
                             <div className="col-md-3">
-                                <button className="btn btn-dark btn-block">Assign</button>
+                                <button className="btn btn-dark btn-block" onClick={this.assignWareHouses}>Assign</button>
                             </div>
 
                             <div className="col-md-3">
