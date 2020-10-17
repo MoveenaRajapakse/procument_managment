@@ -99,7 +99,7 @@ class OrderManagement extends Component {
                                 <div className="form-group">
                                     <label htmlFor="game_name">Order ID</label>
                                     <input type="text"
-                                           className="form-control"
+                                           className="form-control form-control-sm"
                                            name="order_id"
                                            id="order_id"
                                            placeholder="Select a Record"
@@ -112,7 +112,7 @@ class OrderManagement extends Component {
                                 <div className="form-group">
                                     <label htmlFor="game_name">Supplier</label>
                                     <input type="text"
-                                           className="form-control"
+                                           className="form-control form-control-sm"
                                            name="sup"
                                            id="sup"
                                            placeholder="Select a Record"
@@ -126,7 +126,7 @@ class OrderManagement extends Component {
                                 <div className="form-group">
                                     <label htmlFor="game_name">Materiel</label>
                                     <input type="text"
-                                           className="form-control"
+                                           className="form-control form-control-sm"
                                            name="materiel"
                                            id="materiel"
                                            placeholder="Select a Record"
@@ -139,7 +139,7 @@ class OrderManagement extends Component {
                                 <div className="form-group">
                                     <label htmlFor="game_name">Quantity</label>
                                     <input type="text"
-                                           className="form-control"
+                                           className="form-control form-control-sm"
                                            name="qty"
                                            id="qty"
                                            placeholder="Select a Record"
@@ -151,7 +151,7 @@ class OrderManagement extends Component {
                             <div className="col">
                                 <div className="form-group">
                                     <label htmlFor="game_name">Free WareHouses</label>
-                                    <select id="inputState"  className="form-control" value={this.state.warehouse} onChange={this.selectBoxHandler}>
+                                    <select id="inputState"  className="form-control form-control-sm" value={this.state.warehouse} onChange={this.selectBoxHandler}>
                                         {
                                             this.state.FreewareHouses.map(wh =>{
                                                 return(
