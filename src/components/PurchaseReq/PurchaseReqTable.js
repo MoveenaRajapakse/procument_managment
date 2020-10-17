@@ -30,7 +30,7 @@ class PurchaseReqTable extends Component {
             <div>
                 {/*<h4 align="center">Purchase Requisition List</h4>*/}
                 <h5>
-                    <table className="table table-striped" style={{marginTop: 15}} >
+                    <table className="table table-sm table-striped" style={{marginTop: 15}} >
                         <thead className="thead-dark">
                         <tr>
                             {/*<th>Order ID</th>*/}

@@ -81,105 +81,107 @@ class PurchaseRequisitions extends Component {
         return (
             <React.Fragment>
                 <br/>
-                <div class="container">
-                    <h4 className="header">Updating Purchase Requisition Status</h4>
-                    <form>
-                        <div className="row">
-                            <div className="col">
+                <div class="container-fluid">
+                    <div className="row">
+                        <div className="col-4">
+                            <h4 className="header">Updating Purchase Requisition Status</h4>
+                            <form>
+                                <div className="row">
+                                    <div className="col">
+                                        <div className="form-group">
+                                            <label htmlFor="game_name">Order ID</label>
+                                            <input type="text"
+                                                   className="form-control form-control-sm"
+                                                   name="order_id"
+                                                   id="order_id"
+                                                   value={this.state.pid}
+                                                   onChange={this.onChange}/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="row">
+                                    <div className="col">
+                                        <div className="form-group">
+                                            <label htmlFor="game_name">Supplier</label>
+                                            <input type="text"
+                                                   className="form-control form-control-sm"
+                                                   name="supplier"
+                                                   id="supplier"
+                                                   value={this.state.supplier}/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="row">
+                                    <div className="col">
+                                        <div className="form-group ">
+                                            <label htmlFor="game_name">Delivery Date</label>
+                                            <input type="text"
+                                                   className="form-control form-control-sm"
+                                                   name="date"
+                                                   id="date"
+                                                   value={this.state.orderDate}/>
+                                        </div>
+                                    </div>
+
+                                    <div className="col">
+                                        <div className="form-group">
+                                            <label htmlFor="game_name">Delivery Address</label>
+                                            <input type="text"
+                                                   className="form-control form-control-sm"
+                                                   name="address"
+                                                   id="address"
+                                                   value={this.state.address}/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="row">
+                                    <div className="form-group col-md-6">
+                                        <label htmlFor="game_name">Materiel</label>
+                                        <input type="text"
+                                               className="form-control form-control-sm"
+                                               name="materiel"
+                                               id="materiel"
+                                               value={this.state.material}/>
+                                    </div>
+
+                                    <div className="form-group col">
+                                        <label htmlFor="game_name">Quantity</label>
+                                        <input type="text"
+                                               className="form-control form-control-sm"
+                                               name="quantity"
+                                               id="quantity"
+                                               value={this.state.quantity}/>
+                                    </div>
+                                </div>
                                 <div className="form-group">
-                                    <label htmlFor="game_name">Order ID</label>
+                                    <label htmlFor="game_name">Total</label>
                                     <input type="text"
                                            className="form-control form-control-sm"
-                                           name="order_id"
-                                           id="order_id"
-                                           value={this.state.pid}
-                                           onChange={this.onChange}/>
+                                           name="total"
+                                           id="total"
+                                           value={this.state.total}/>
                                 </div>
-                            </div>
+                                <Success>{this.state.msg}</Success>
+                                <br/>
+                                <div className="row" >
+                                    <div className="col-md-4">
+                                        <button className="btn btn-success btn-block " onClick={this.acceptOrder}>Accept</button>
+                                    </div>
 
-                            <div className="col">
-                                <div className="form-group">
-                                    <label htmlFor="game_name">Supplier</label>
-                                    <input type="text"
-                                           className="form-control form-control-sm"
-                                           name="supplier"
-                                           id="supplier"
-                                           value={this.state.supplier}/>
+                                    <div className="col-md-4">
+                                        <button className="btn btn-danger btn-block " onClick={this.rejectOrder}>Reject</button>
+                                    </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
-
-                        <div className="row">
-                            <div className="col">
-                                <div className="form-group ">
-                                    <label htmlFor="game_name">Delivery Date</label>
-                                    <input type="text"
-                                           className="form-control form-control-sm"
-                                           name="date"
-                                           id="date"
-                                           value={this.state.orderDate}/>
-                                </div>
-                            </div>
-
-                            <div className="col">
-                                <div className="form-group">
-                                    <label htmlFor="game_name">Delivery Address</label>
-                                    <input type="text"
-                                           className="form-control form-control-sm"
-                                           name="address"
-                                           id="address"
-                                           value={this.state.address}/>
-                                </div>
-                            </div>
+                        <div className="col-8">
+                            <h4 className="header">Available Purchase Requisitions</h4>
+                            <PurchaseReqTable onViewClick={this.getData}/>
                         </div>
-
-                        <div className="form-row">
-                            <div className="form-group col-md-6">
-                                <label htmlFor="game_name">Materiel</label>
-                                <input type="text"
-                                       className="form-control form-control-sm"
-                                       name="materiel"
-                                       id="materiel"
-                                       value={this.state.material}/>
-                            </div>
-
-                            <div className="form-group col-md-2">
-                                <label htmlFor="game_name">Total</label>
-                                <input type="text"
-                                       className="form-control form-control-sm"
-                                       name="total"
-                                       id="total"
-                                       value={this.state.total}/>
-                            </div>
-
-                            <div className="form-group col-md-2">
-                                <label htmlFor="game_name">Quantity</label>
-                                <input type="text"
-                                       className="form-control form-control-sm"
-                                       name="quantity"
-                                       id="quantity"
-                                       value={this.state.quantity}/>
-                            </div>
-
-                        </div>
-
-                        <Success>{this.state.msg}</Success>
-
-                        <div className="row" >
-                            <div className="col-md-3">
-                                <button className="btn btn-success btn-block btn-sm" onClick={this.acceptOrder}>Accept</button>
-                            </div>
-
-                            <div className="col-md-3">
-                                <button className="btn btn-danger btn-block btn-sm" onClick={this.rejectOrder}>Reject</button>
-                            </div>
-                        </div>
-
-                    </form>
-                </div>
+                    </div>
                 <br/>
-                <h4 className="header">Available Purchase Requisitions</h4>
-                <PurchaseReqTable onViewClick={this.getData}/>
+
+                </div>
             </React.Fragment>
 
         );

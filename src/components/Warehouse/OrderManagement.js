@@ -86,9 +86,11 @@ class OrderManagement extends Component {
         return (
             <React.Fragment>
                 <br/>
-                <div class="container">
-                    <h4>Assigning WareHouses</h4>
-                    <form>
+                <div class="container-fluid">
+                    <div className="row">
+                        <div className="col-4">
+                            <h4 className="header">Assigning WareHouses</h4>
+                            <form>
                         <div className="row">
                             <div className="col">
                                 <div className="form-group">
@@ -102,7 +104,8 @@ class OrderManagement extends Component {
                                            onChange={this.onChange}/>
                                 </div>
                             </div>
-
+                        </div>
+                        <div className="row">
                             <div className="col">
                                 <div className="form-group">
                                     <label htmlFor="game_name">Supplier</label>
@@ -111,7 +114,7 @@ class OrderManagement extends Component {
                                            name="sup"
                                            id="sup"
                                            placeholder="Select a Record"
-                                        value={this.state.supplier}/>
+                                           value={this.state.supplier}/>
                                 </div>
                             </div>
                         </div>
@@ -129,7 +132,6 @@ class OrderManagement extends Component {
                                            onChange={this.onChange}/>
                                 </div>
                             </div>
-
                             <div className="col">
                                 <div className="form-group">
                                     <label htmlFor="game_name">Quantity</label>
@@ -142,22 +144,23 @@ class OrderManagement extends Component {
                                            onChange={this.onChange}/>
                                 </div>
                             </div>
-
-                            <div className="col">
-                                <div className="form-group">
-                                    <label htmlFor="game_name">Free WareHouses</label>
-                                    <select id="inputState"  className="form-control" value={this.state.warehouse} onChange={this.selectBoxHandler}>
-                                        {
-                                            this.state.FreewareHouses.map(wh =>{
-                                                return(
-                                                    <option value={wh.pid} key={wh.pid}>{wh.warehouse}</option>
-                                                )
-                                            })
-                                        }
-                                    </select>
-                                </div>
-                            </div>
                         </div>
+                                <div className="row">
+                                    <div className="col">
+                                        <div className="form-group">
+                                            <label htmlFor="game_name">Free WareHouses</label>
+                                            <select id="inputState"  className="form-control" value={this.state.warehouse} onChange={this.selectBoxHandler}>
+                                                {
+                                                    this.state.FreewareHouses.map(wh =>{
+                                                        return(
+                                                            <option value={wh.pid} key={wh.pid}>{wh.warehouse}</option>
+                                                        )
+                                                    })
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
                         <Success>{this.state.msg}</Success>
                         <div className="row" >
                             <div className="col-md-3">
@@ -170,11 +173,15 @@ class OrderManagement extends Component {
                         </div>
 
                     </form>
+                        </div>
+                        <div className="col-8">
+                            <h4 className="header">Approved Purchase Requisitions</h4>
+                            <OderDetailsTable onViewClick={this.getData}/>
+                        </div>
+                    </div>
                 </div>
-
                 <br/><br/>
-                <h4>Available Inventory Details</h4>
-                    <OderDetailsTable onViewClick={this.getData}/>
+
 
             </React.Fragment>
 

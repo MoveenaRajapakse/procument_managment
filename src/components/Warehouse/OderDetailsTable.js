@@ -28,7 +28,7 @@ class OderDetailsTable extends Component {
         return (
             <div>
                 <h5>
-                    <table className="table table-striped" style={{marginTop: 15}}>
+                    <table className="table table-sm table-striped" style={{marginTop: 15}}>
                         <thead class="thead-dark">
                         <tr>
                             <th>Requisition ID</th>
@@ -45,7 +45,7 @@ class OderDetailsTable extends Component {
                                         <td>{pr.pid}</td>
                                         <td>{pr.material}</td>
                                         <td>{pr.quantity}</td>
-                                        <td><button type="button" className="btn btn-dark btn-sm" onClick={()=>this.getRowData(pr.supplier,pr.orderDate,pr.address,pr.total,pr.material,pr.quantity,pr.pid)}>VIEW</button></td>
+                                        <td><button type="button" className="btn btn-outline-info btn-sm" onClick={()=>this.getRowData(pr.supplier,pr.orderDate,pr.address,pr.total,pr.material,pr.quantity,pr.pid)}>VIEW</button></td>
                                     </tr>
                                     </tbody>
                                 )
