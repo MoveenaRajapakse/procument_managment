@@ -10,6 +10,7 @@ class OderDetailsTable extends Component {
         };
     }
 
+    //-----------------------------get all approved order details-------------------------------------
     componentDidMount() {
         axios.get('/getApprovedOrders')
             .then(response => {
@@ -20,6 +21,7 @@ class OderDetailsTable extends Component {
             })
     }
 
+    //-----------------------get selected row data to the form-----------------------------------------
     getRowData = (supplier,orderDate,address,total,material,quantity,pid) =>{
         this.props.onViewClick(supplier,orderDate,address,total,material,quantity,pid);
     }
@@ -34,7 +36,7 @@ class OderDetailsTable extends Component {
                             <th>Requisition ID</th>
                             <th>Material</th>
                             <th>Quantity</th>
-                            <th>Option</th>
+                            <th>Action</th>
                         </tr>
                         </thead>
                         {
@@ -45,7 +47,7 @@ class OderDetailsTable extends Component {
                                         <td>{pr.pid}</td>
                                         <td>{pr.material}</td>
                                         <td>{pr.quantity}</td>
-                                        <td><button type="button" className="btn btn-dark btn-sm" onClick={()=>this.getRowData(pr.supplier,pr.orderDate,pr.address,pr.total,pr.material,pr.quantity,pr.pid)}>VIEW</button></td>
+                                        <td><button type="button" className="btn btn-outline-info btn-sm" onClick={()=>this.getRowData(pr.supplier,pr.orderDate,pr.address,pr.total,pr.material,pr.quantity,pr.pid)}>VIEW</button></td>
                                     </tr>
                                     </tbody>
                                 )

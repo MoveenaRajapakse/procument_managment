@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import OderDetailsTable from "./OderDetailsTable";
 import axios from "axios";
 import Success from "../succeess";
+import "../header.css";
 
 class OrderManagement extends Component {
 
@@ -21,6 +22,7 @@ class OrderManagement extends Component {
         }
     }
 
+    //----------------------------------------Get records from the Table----------------------------------------------
     getData = (supplier,orderDate,address,total,material,quantity,pid) => {
         this.setState({
             pid : pid,
@@ -36,6 +38,7 @@ class OrderManagement extends Component {
         console.log(this.state);
     }
 
+    //--------------------Load available free warehouses to the drop down when page is loading--------------------------------
     componentDidMount() {
         axios.get('/getFreeSlots')
             .then(response => {
@@ -46,12 +49,14 @@ class OrderManagement extends Component {
             })
     }
 
+    //---------------------------------get the selected drop down value-----------------------------------
     selectBoxHandler = (event) =>{
         this.setState({
             warehouse:event.target.value
         });
     }
 
+    //--------------------------Assigning the inventory to selected warehouse-----------------------------
     assignWareHouses = (e) =>{
         e.preventDefault();
 
@@ -87,7 +92,7 @@ class OrderManagement extends Component {
             <React.Fragment>
                 <br/>
                 <div class="container">
-                    <h4>Assigning WareHouses</h4>
+                    <h4 className="header">Assigning WareHouses</h4>
                     <form>
                         <div className="row">
                             <div className="col">
@@ -161,19 +166,19 @@ class OrderManagement extends Component {
                         <Success>{this.state.msg}</Success>
                         <div className="row" >
                             <div className="col-md-3">
-                                <button className="btn btn-dark btn-block" onClick={this.assignWareHouses}>Assign</button>
+                                <button className="btn btn-success btn-block btn-sm" onClick={this.assignWareHouses}>Assign</button>
                             </div>
 
-                            <div className="col-md-3">
+                            {/*<div className="col-md-3">
                                 <button className="btn btn-dark btn-block">Split</button>
-                            </div>
+                            </div>*/}
                         </div>
 
                     </form>
                 </div>
 
                 <br/><br/>
-                <h4>Available Inventory Details</h4>
+                <h4 className="header">Available Inventory Details</h4>
                     <OderDetailsTable onViewClick={this.getData}/>
 
             </React.Fragment>
