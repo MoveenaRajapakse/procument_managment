@@ -168,13 +168,10 @@ class OrderManagement extends Component {
                                 </div>
                         <Success>{this.state.msg}</Success>
                         <div className="row" >
-                            <div className="col-md-3">
-                                <button className="btn btn-dark btn-block" onClick={this.assignWareHouses}>Assign</button>
+                            <div className="col-md-4">
+                                <button className="btn btn-success btn-block" onClick={this.assignWareHouses}>Assign</button>
                             </div>
 
-                            <div className="col-md-3">
-                                <button className="btn btn-dark btn-block">Split</button>
-                            </div>
                         </div>
 
                     </form>
