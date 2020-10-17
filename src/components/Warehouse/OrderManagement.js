@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import OderDetailsTable from "./OderDetailsTable";
 import axios from "axios";
 import Success from "../succeess";
+import "../header.css";
 
 class OrderManagement extends Component {
 
@@ -21,6 +22,7 @@ class OrderManagement extends Component {
         }
     }
 
+    //----------------------------------------Get records from the Table----------------------------------------------
     getData = (supplier,orderDate,address,total,material,quantity,pid) => {
         this.setState({
             pid : pid,
@@ -36,6 +38,7 @@ class OrderManagement extends Component {
         console.log(this.state);
     }
 
+    //--------------------Load available free warehouses to the drop down when page is loading--------------------------------
     componentDidMount() {
         axios.get('/getFreeSlots')
             .then(response => {
@@ -46,12 +49,14 @@ class OrderManagement extends Component {
             })
     }
 
+    //---------------------------------get the selected drop down value-----------------------------------
     selectBoxHandler = (event) =>{
         this.setState({
             warehouse:event.target.value
         });
     }
 
+    //--------------------------Assigning the inventory to selected warehouse-----------------------------
     assignWareHouses = (e) =>{
         e.preventDefault();
 
@@ -180,6 +185,7 @@ class OrderManagement extends Component {
                         </div>
                     </div>
                 </div>
+
                 <br/><br/>
 
 
