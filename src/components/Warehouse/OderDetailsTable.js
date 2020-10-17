@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import OrdersTableRow from "./OrdersTableRow";
 
 class OderDetailsTable extends Component {
 
@@ -12,19 +11,13 @@ class OderDetailsTable extends Component {
     }
 
     componentDidMount() {
-        axios.get('/getAllRequisition')
+        axios.get('/getApprovedOrders')
             .then(response => {
                 this.setState({orders: response.data});
             })
             .catch(function (error) {
                 console.log(error);
             })
-    }
-
-    tabRow() {
-        return this.state.orders.map(function (object,i) {
-            return <OrdersTableRow obj = {object} key ={i} />;
-        })
     }
 
     getRowData = (supplier,orderDate,address,total,material,quantity,pid) =>{

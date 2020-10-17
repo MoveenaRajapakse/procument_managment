@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import OderDetailsTable from "./OderDetailsTable";
-import {updateInventory} from "./UserFunctions";
 import axios from "axios";
+import Success from "../succeess";
 
 class OrderManagement extends Component {
 
@@ -16,7 +16,8 @@ class OrderManagement extends Component {
             address:'',
             orderDate:'',
             FreewareHouses: [],
-            wareHouse: ''
+            warehouse: '',
+            msg:''
         }
     }
 
@@ -29,10 +30,9 @@ class OrderManagement extends Component {
             total:total,
             address:address,
             orderDate:orderDate,
-            supplier:supplier
-
+            supplier:supplier,
+            msg:''
         })
-
         console.log(this.state);
     }
 
@@ -46,10 +46,10 @@ class OrderManagement extends Component {
             })
     }
 
-    selectBoxHandler = (e) =>{
-        let wh = {...this.state.wareHouse}
-        wh.wareHouse = e.target.value;
-        this.setState({wh});
+    selectBoxHandler = (event) =>{
+        this.setState({
+            warehouse:event.target.value
+        });
     }
 
     assignWareHouses = (e) =>{
@@ -58,16 +58,27 @@ class OrderManagement extends Component {
         const pid = this.state.pid;
         const material = this.state.material;
         const qty = this.state.quantity;
+        const wh = this.state.warehouse;
 
-        axios.post('https://cors-anywhere.herokuapp.com/https://procure-api.herokuapp.com/updateInventory?quantity='+qty+'material='+material+'pid='+pid,{headers:{'Access-Control-Allow-Origin':'*'}}
+        console.log(material+" "+qty+" "+wh);
+
+        axios.post('https://cors-anywhere.herokuapp.com/https://procure-api.herokuapp.com/updateInventory?quantity='+qty+'&material='+material+'&pid='+wh,{headers:{'Access-Control-Allow-Origin':'*'}}
         ).then(response => {
             console.log(response);
             this.setState({
-                msg:'Assign to WareHouse Successfully'
+                msg:'Warehouse Assigned Successfully'
             })
         }).catch(error => {
             console.log(error);
         })
+
+        axios.post('https://cors-anywhere.herokuapp.com/https://procure-api.herokuapp.com/updateRequisitionDelivery?delivery=Deliverd&pid='+pid,{headers:{'Access-Control-Allow-Origin':'*'}}
+        ).then(response => {
+            console.log(response);
+        }).catch(error => {
+            console.log(error);
+        })
+
 
     }
 
@@ -135,11 +146,11 @@ class OrderManagement extends Component {
                             <div className="col">
                                 <div className="form-group">
                                     <label htmlFor="game_name">Free WareHouses</label>
-                                    <select id="inputState" className="form-control" value={this.state.wareHouse} onChange={this.selectBoxHandler}>
+                                    <select id="inputState"  className="form-control" value={this.state.warehouse} onChange={this.selectBoxHandler}>
                                         {
                                             this.state.FreewareHouses.map(wh =>{
                                                 return(
-                                                    <option value={wh._id} key={wh._id}>{wh.warehouse}</option>
+                                                    <option value={wh.pid} key={wh.pid}>{wh.warehouse}</option>
                                                 )
                                             })
                                         }
@@ -147,7 +158,7 @@ class OrderManagement extends Component {
                                 </div>
                             </div>
                         </div>
-
+                        <Success>{this.state.msg}</Success>
                         <div className="row" >
                             <div className="col-md-3">
                                 <button className="btn btn-dark btn-block" onClick={this.assignWareHouses}>Assign</button>

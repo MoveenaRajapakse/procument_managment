@@ -4,7 +4,7 @@ import {BrowserRouter as Router, Route} from "react-router-dom";
 import NavBar from './components/Navbar/NavBar';
 import Login from './components/Login';
 import Landing from './components/Landing';
-import OrderManagement from './components/OrderManagement';
+import OrderManagement from './components/Warehouse/OrderManagement';
 import PurchaseRequisitions from './components/PurchaseReq/PurchaseRequisitions';
 
 function App() {
