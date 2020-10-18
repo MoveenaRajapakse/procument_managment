@@ -4,7 +4,7 @@ import OrderManagement from "../components/Warehouse/OrderManagement";
 
 describe('OrderManagement Component' , () => {
     it('should render without throwing an error' , () => {
-        expect(shallow(<OrderManagement/>).find('form.OrderManagement').exists()).toBe(true)
+        expect(shallow(<OrderManagement/>).find('form').exists()).toBe(true)
     })
 
     it('should render orderID' , ()=> {
