@@ -10,7 +10,9 @@ class PurchaseReqTable extends Component {
         };
     }
 
-    //----------------------------get all available pending orders------------------------------------
+    /**
+     * get all available pending orders
+     */
     componentDidMount() {
         axios.get('/getPendingOrders')
             .then(response => {
@@ -22,7 +24,9 @@ class PurchaseReqTable extends Component {
     }
 
 
-    //-----------------------get selected row data to the form-----------------------------------------
+    /**
+     * get selected row data to the form
+     */
     getRowData = (supplier,orderDate,address,total,material,quantity,pid) =>{
         this.props.onViewClick(supplier,orderDate,address,total,material,quantity,pid);
     }

@@ -6,6 +6,13 @@ import "../header.css";
 
 class PurchaseRequisitions extends Component {
 
+    /**
+    *constructor with attributes to define state
+     * @param pid
+     * Id of the purchase request to approve or reject
+     * @param status
+     * approve or reject status to update the request
+    */
     constructor(props) {
         super(props);
         this.state = {
@@ -20,7 +27,9 @@ class PurchaseRequisitions extends Component {
         }
     }
 
-    //----------get records from the table----------
+    /**
+     * get records from the table to the form
+    */
     getData = (supplier,orderDate,address,total,material,quantity,pid) => {
         this.setState({
             pid : pid,
@@ -37,7 +46,10 @@ class PurchaseRequisitions extends Component {
         console.log(this.state);
     }
 
-    //----------accept order----------
+    /**
+     * accept order method
+     * pass the pid and status values to given Url to update the request
+     */
     acceptOrder = (e) =>{
         e.preventDefault();
 
@@ -56,7 +68,10 @@ class PurchaseRequisitions extends Component {
 
     }
 
-    //---------------reject order---------------------
+    /**
+    *reject order method
+     * pass the pid and status values to given Url to update the request
+     */
     rejectOrder = (e) =>{
         e.preventDefault();
 
@@ -174,6 +189,9 @@ class PurchaseRequisitions extends Component {
                                 </div>
                             </form>
                         </div>
+                        {/**
+                         *display the all available pending purchase requests in a table
+                         */}
                         <div className="col-8">
                             <h4 className="header">Available Purchase Requisitions</h4>
                             <PurchaseReqTable onViewClick={this.getData}/>

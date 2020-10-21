@@ -10,7 +10,9 @@ class OderDetailsTable extends Component {
         };
     }
 
-    //-----------------------------get all approved order details-------------------------------------
+    /**
+     * get all approved order details
+     */
     componentDidMount() {
         axios.get('/getApprovedOrders')
             .then(response => {
@@ -21,7 +23,9 @@ class OderDetailsTable extends Component {
             })
     }
 
-    //-----------------------get selected row data to the form-----------------------------------------
+    /**
+     * get selected row data to the form
+     */
     getRowData = (supplier,orderDate,address,total,material,quantity,pid) =>{
         this.props.onViewClick(supplier,orderDate,address,total,material,quantity,pid);
     }

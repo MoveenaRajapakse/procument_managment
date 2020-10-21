@@ -6,6 +6,15 @@ import "../header.css";
 
 class OrderManagement extends Component {
 
+    /**
+     *constructor with attributes to define state
+     * @param pid
+     * Id of the available order to assign to a free warehouse
+     * @param qty
+     * quantity of the order
+     * @param material
+     * material of the order
+     */
     constructor() {
         super();
         this.state = {
@@ -22,7 +31,9 @@ class OrderManagement extends Component {
         }
     }
 
-    //----------------------------------------Get records from the Table----------------------------------------------
+    /**
+     * get records from the table to the form
+     */
     getData = (supplier,orderDate,address,total,material,quantity,pid) => {
         this.setState({
             pid : pid,
@@ -38,7 +49,9 @@ class OrderManagement extends Component {
         console.log(this.state);
     }
 
-    //--------------------Load available free warehouses to the drop down when page is loading--------------------------------
+    /**
+     * Load available free warehouses to the drop down when page is loading
+     */
     componentDidMount() {
         axios.get('/getFreeSlots')
             .then(response => {
@@ -49,14 +62,18 @@ class OrderManagement extends Component {
             })
     }
 
-    //---------------------------------get the selected drop down value-----------------------------------
+    /**
+     * get the selected drop down value
+     */
     selectBoxHandler = (event) =>{
         this.setState({
             warehouse:event.target.value
         });
     }
 
-    //--------------------------Assigning the inventory to selected warehouse-----------------------------
+    /**
+     * Assigning the orders to selected warehouse
+     */
     assignWareHouses = (e) =>{
         e.preventDefault();
 
