@@ -14,6 +14,11 @@ class OrderManagement extends Component {
      * quantity of the order
      * @param material
      * material of the order
+     * @param status
+     * @param total
+     * @param address
+     * @param orderDate
+     * @param warehouse
      */
     constructor() {
         super();
@@ -73,6 +78,9 @@ class OrderManagement extends Component {
 
     /**
      * Assigning the orders to selected warehouse
+     * @param pid as warehouse ID
+     * @param material , quantity
+     * @response successfully assign message
      */
     assignWareHouses = (e) =>{
         e.preventDefault();

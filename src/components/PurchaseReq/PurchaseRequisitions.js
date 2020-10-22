@@ -12,6 +12,11 @@ class PurchaseRequisitions extends Component {
      * Id of the purchase request to approve or reject
      * @param status
      * approve or reject status to update the request
+     * @param quantity
+     * @param material
+     * @param total
+     * @param address
+     * @param orderDate
     */
     constructor(props) {
         super(props);
@@ -49,6 +54,8 @@ class PurchaseRequisitions extends Component {
     /**
      * accept order method
      * pass the pid and status values to given Url to update the request
+     * @param pid , status
+     * @response successfully approved message
      */
     acceptOrder = (e) =>{
         e.preventDefault();
@@ -71,6 +78,8 @@ class PurchaseRequisitions extends Component {
     /**
     *reject order method
      * pass the pid and status values to given Url to update the request
+     * @param pid , status
+     * @response successfully rejected message
      */
     rejectOrder = (e) =>{
         e.preventDefault();
